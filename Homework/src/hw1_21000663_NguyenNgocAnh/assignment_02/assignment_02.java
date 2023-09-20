@@ -1,10 +1,10 @@
-//package w1_id_NguyenNgocAnh;
+package hw1_21000663_NguyenNgocAnh.assignment_02;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class assignment_02 {
-    // check prime
+        // check prime
     static boolean isPrime(int n) {
         if (n < 2)
             return false;
@@ -25,7 +25,9 @@ public class assignment_02 {
     public static void main(String[] args) {
         // input
         Scanner sc = new Scanner(System.in);
+        System.out.println("Input n: ");
         Integer n = sc.nextInt();
+        System.out.println("Input array:");
         Integer[] array = new Integer[n];
 
         // input array
@@ -42,6 +44,7 @@ public class assignment_02 {
         }
 
         // print prime 
+        System.out.println("Output prime array: ");
         for (Integer it : primes) {
             System.out.print(it + " ");
         }

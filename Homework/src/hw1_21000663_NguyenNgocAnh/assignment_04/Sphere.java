@@ -1,4 +1,4 @@
-package assignment_04;
+package hw1_21000663_NguyenNgocAnh.assignment_04;
 
 public class Sphere {
     //create
@@ -17,12 +17,12 @@ public class Sphere {
     }
 
     // calculate surrounding area
-    Double SurroundArea() {
-        return 4 * Math.PI * Math.pow(r, 2);
+    public Double SurroundArea() {
+        return (4 * Math.PI * Math.pow(r,2));
     }
 
     // calculate volume
-    Double Volume() {
+    public Double Volume() {
         return 4 / 3 * Math.PI * Math.pow(r, 3);
     }
 
@@ -42,7 +42,7 @@ public class Sphere {
     }
 
     public String toString() {
-        return String.format("(x - %d)^2 + (y - %d)^2 + (z - %d)^2 = %d^2",this.x, this.y, this.z, this.r);
+        return String.format("(x - %.3f)^2 + (y - %.3f)^2 + (z - %.3f)^2 = %.3f^2",this.x, this.y, this.z, this.r);
     }
 }
 
