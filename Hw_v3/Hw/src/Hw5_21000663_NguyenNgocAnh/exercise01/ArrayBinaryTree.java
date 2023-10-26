@@ -175,6 +175,5 @@ public class ArrayBinaryTree<E, T> implements BinaryTreeInterface<T> {
         } catch (Exception e) {
             System.out.println(e);
         }
-        
     }
 }
