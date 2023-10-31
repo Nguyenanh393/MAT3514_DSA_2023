@@ -8,8 +8,8 @@ public class LinkedBinaryTree<E, T> implements BinaryTreeInterface<T> {
     public static class Node<E> {
         private E element;
         private Node<E> parent;
-        private Node<E> left;
-        private Node<E> right;
+        public Node<E> left;
+        public Node<E> right;
 
         public Node(E e, Node<E> above, Node<E> leftChild, Node<E> rightChild) {
             element = e;
@@ -26,7 +26,7 @@ public class LinkedBinaryTree<E, T> implements BinaryTreeInterface<T> {
         }
     }
 
-    protected Node<E> root = null;
+    public Node<E> root = null;
     private int size = 0;
 
     public Node<E> addRoot(E element) {

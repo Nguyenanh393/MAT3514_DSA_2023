@@ -7,7 +7,7 @@ public class Test {
         StackCalculate stackCalculate = new StackCalculate();
 
         // Test case
-        String s = "(10 + 8)/((5 - 2) * 17)";
+        String s = "(10 + 8) / ((5 - 2) * 17)";
         String s1 = "(1 + ((2 + 3) * (8 * 5)))";
         String s2 = "(5 - (8 - 4) * (2 + 3)) + (8/4)";
         String s3 = "(10 - 8/((2 + 5) - 17)";
