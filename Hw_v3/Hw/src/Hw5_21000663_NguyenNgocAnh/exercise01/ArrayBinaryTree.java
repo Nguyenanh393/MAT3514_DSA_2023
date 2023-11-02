@@ -52,8 +52,8 @@ public class ArrayBinaryTree<E, T> implements BinaryTreeInterface<T> {
     }
 
     @Override
-    public int root() {
-        return 1;
+    public T root() {
+        return (T) Integer.valueOf(1);
     }
     @Override
     public int size() {

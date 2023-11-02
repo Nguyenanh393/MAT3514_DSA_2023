@@ -17,11 +17,16 @@ public class Test {
 
         System.out.println("Preorder: ");
         tree.preorderPrint();
-        System.out.println("\nPostorder: ");
-        tree.postorderPrint();
-        System.out.println("\nInorder: ");
-        tree.inorderPrint();
+        System.out.println();
 
-        System.out.println("\nResult: " + tree.calculate());
+        System.out.println("Postorder: ");
+        tree.postorderPrint();
+        System.out.println();
+
+        System.out.println("Inorder: ");
+        tree.inorderPrint();
+        System.out.println();
+
+        System.out.println("Result: " + tree.calculate());
     }
 }

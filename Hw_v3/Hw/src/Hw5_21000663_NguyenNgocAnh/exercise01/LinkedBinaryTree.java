@@ -66,8 +66,8 @@ public class LinkedBinaryTree<E, T> implements BinaryTreeInterface<T> {
     }
 
     @Override
-    public int root() {
-        return 0;
+    public T root() {
+        return (T) root;
     }
 
     @Override
@@ -138,18 +138,18 @@ public class LinkedBinaryTree<E, T> implements BinaryTreeInterface<T> {
         printTree((T) root, 0);
     }
 
-    private void printTree(T p, int level) {
+    private void printTree(T p, int dep) {
         Node<E> node = (Node<E>) p;
         
         if (right((T) node) != null) {
-            printTree(right((T) node), level + 1);
+            printTree(right((T) node), dep + 1);
         }
-        for (int i = 0; i < level; i++) {
+        for (int i = 0; i < dep; i++) {
             System.out.print("\t");
         }
         System.out.println(node.getElement());
         if (left((T) node) != null) {
-            printTree(left((T) node), level + 1);
+            printTree(left((T) node), dep + 1);
         }
     }
 
@@ -169,18 +169,18 @@ public class LinkedBinaryTree<E, T> implements BinaryTreeInterface<T> {
         }
     }
     
-    private void printTreeToFile(T p, int level, FileWriter fw) {
+    private void printTreeToFile(T p, int dep, FileWriter fw) {
         try {
             Node<E> node = (Node<E>) p;
             if (right((T) node) != null) {
-                printTreeToFile(right((T) node), level + 1, fw);
+                printTreeToFile(right((T) node), dep + 1, fw);
             }
-            for (int i = 0; i < level; i++) {
+            for (int i = 0; i < dep; i++) {
                 fw.write("\t");
             }
             fw.write(node.getElement() + "\n");
             if (left((T) node) != null) {
-                printTreeToFile(left((T) node), level + 1, fw);
+                printTreeToFile(left((T) node), dep + 1, fw);
             }
         } catch (Exception e) {
             System.out.println(e);

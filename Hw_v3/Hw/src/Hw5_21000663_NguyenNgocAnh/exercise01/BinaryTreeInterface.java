@@ -1,7 +1,7 @@
 package Hw5_21000663_NguyenNgocAnh.exercise01;
 
 public interface BinaryTreeInterface<T> {
-    int root();
+    T root();
     int size();
     boolean isEmpty();
     int numChildren(T p);

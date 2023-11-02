@@ -2,6 +2,7 @@ package Hw5_21000663_NguyenNgocAnh.practice21;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class MakeBinaryTreeFromLinkedList {
     class Tree{
@@ -28,33 +29,35 @@ public class MakeBinaryTreeFromLinkedList {
     class GfG 
     {
         public static Tree convert(Node head, Tree node) {
-            Queue<Tree> q = new LinkedList<Tree>();
-            if (head == null) 
-            {
-                node = null;
+            if (head == null) {
                 return null;
             }
-            MakeBinaryTreeFromLinkedList outer = new MakeBinaryTreeFromLinkedList();
-            node = outer.new Tree(head.data);
-            q.add(node);
+
+            Queue<MakeBinaryTreeFromLinkedList.Tree> q = new LinkedList<>();
+            MakeBinaryTreeFromLinkedList.Tree root = new MakeBinaryTreeFromLinkedList().new Tree(head.data);
+            // remove MakeBinaryTreeFromLinkedList when submit on GFG
+            q.add(root);
             head = head.next;
-            while (head != null) 
-            {
+
+            while (head != null) {
                 Tree parent = q.poll();
-                Tree leftChild = null, rightChild = null;
-                leftChild = outer.new Tree(head.data);
-                q.add(leftChild);
+
+                Tree left = new MakeBinaryTreeFromLinkedList().new Tree(head.data); 
+                // remove MakeBinaryTreeFromLinkedList when submit on GFG
+                q.add(left);
                 head = head.next;
-                if (head != null) 
-                {
-                    rightChild = outer.new Tree(head.data);
-                    q.add(rightChild);
+
+                Tree right = null;
+                if (head != null) {
+                    right = new MakeBinaryTreeFromLinkedList().new Tree(head.data);
+                    // remove MakeBinaryTreeFromLinkedList when submit on GFG
+                    q.add(right);
                     head = head.next;
                 }
-                parent.left = leftChild;
-                parent.right = rightChild;
+                parent.left = left;
+                parent.right = right;
             }
-            return node;
+        return node;
         }
     }  
 }

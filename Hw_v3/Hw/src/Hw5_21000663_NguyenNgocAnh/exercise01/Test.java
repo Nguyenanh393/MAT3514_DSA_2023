@@ -26,7 +26,7 @@ public class Test {
         LinkedBinaryTree.Node<Integer> left3 = tree2.addLeft(right, 5);
         LinkedBinaryTree.Node<Integer> left4 = tree2.addLeft(left2, 10);
         
-        System.out.println("Root: " + tree2.root());
+        System.out.println("Root: " + tree2.root().getElement());
         System.out.println("Size: " + tree2.size());
         System.out.println("isEmpty: " + tree2.isEmpty());
         System.out.println("numChildren(1): " + tree2.numChildren(root));
@@ -39,3 +39,25 @@ public class Test {
         tree2.printTreeToFile();
     }
 }
+//         8
+//                 6
+// 1
+//                 0
+//         5
+//                 4
+// --------------------------------------------------
+// Root: 1
+// Size: 7
+// isEmpty: false
+// numChildren(1): 2
+// parent(1): null
+// left(1): 4
+// right(1): 6
+// sibling(1): 4
+//         6
+//                 5
+// 1
+//                 8
+//         4
+//                 7
+//                         10
