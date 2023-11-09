@@ -1,7 +1,7 @@
 package Hw6_21000663_NguyenNgocAnh.exercise01;
 
 public class SortedArrayPriorityQueue<K extends Comparable, E> implements PriotityQueueInterface{
-    protected class ArrEntry<K, E> implements Entry<K, E> {
+    public class ArrEntry<K, E> implements Entry<K, E> {
         K key;
         E element;
         public ArrEntry (K k, E e) {
@@ -25,7 +25,7 @@ public class SortedArrayPriorityQueue<K extends Comparable, E> implements Prioti
     }
     
     ArrEntry<K, E>[] array;
-    int n = 0;
+    private int n = 0;
     int defaultSize = 100;
 
     public SortedArrayPriorityQueue() {
