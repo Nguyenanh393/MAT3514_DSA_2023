@@ -1,13 +1,14 @@
 package Hw6_21000663_NguyenNgocAnh.exercise01;
 
 public class UnsortedArrayPriorityQueue<K extends Comparable, E> implements PriotityQueueInterface {
-   public class ArrEntry<K, E> implements Entry<K, E> {
-        K key;
-        E element;
-        public ArrEntry (K k, E e) {
+    protected class ArrEntry<K, E> implements Entry<K, E> {
+        private K key;
+        private E element;
+        public ArrEntry(K k, E e) {
             key = k;
             element = e;
         }
+
         @Override
         public K getKey() {
             if (key == null) {
@@ -24,9 +25,9 @@ public class UnsortedArrayPriorityQueue<K extends Comparable, E> implements Prio
         }
     }
     
-    ArrEntry<K, E>[] array;
-    int n = 0;
-    int defaultSize = 100;
+    private ArrEntry<K, E>[] array;
+    private int n = 0;
+    private int defaultSize = 100;
 
     public UnsortedArrayPriorityQueue() {
         array = new ArrEntry[defaultSize];
@@ -35,6 +36,12 @@ public class UnsortedArrayPriorityQueue<K extends Comparable, E> implements Prio
     public UnsortedArrayPriorityQueue(int size) {
         array = new ArrEntry[size];
     }
+
+    public UnsortedArrayPriorityQueue(ArrEntry<K, E>[] array) {
+        this.array = array;
+        n = array.length;
+    }
+
     @Override
     public int size() {
         return n;
@@ -55,19 +62,17 @@ public class UnsortedArrayPriorityQueue<K extends Comparable, E> implements Prio
             array = newArray;
         }
         array[n] = (ArrEntry<K, E>) entry;
+        n++;
     }
 
     @Override
-    public void insert(Object k, Object e) {
+    public void insert(Object key, Object value) {
         if (n == array.length) {
-            ArrEntry<K, E>[] newArray = new ArrEntry[array.length * 2];
-            for (int i = 0; i < array.length; i++) {
-                newArray[i] = array[i];
-            }
-            array = newArray;
+            throw new IllegalStateException("Queue is full");
         }
 
-        array[n] = new ArrEntry((K) k, (E) e);
+        array[n] = new ArrEntry(key, value);
+        n++;
     }
 
     @Override
@@ -101,4 +106,11 @@ public class UnsortedArrayPriorityQueue<K extends Comparable, E> implements Prio
         }
         return min;
     } 
+
+    public void print() {
+        for (int i = 0; i < n; i++) {
+            System.out.println(array[i].getKey() + " " + array[i].getValue());
+        }
+    }
+
 }

@@ -55,6 +55,7 @@ public class SortedArrayPriorityQueue<K extends Comparable, E> implements Prioti
             array = newArray;
         }
         array[n] = (ArrEntry<K, E>) entry;
+        n++;
     }
 
     @Override
@@ -68,6 +69,7 @@ public class SortedArrayPriorityQueue<K extends Comparable, E> implements Prioti
         }
 
         array[n] = new ArrEntry((K) k, (E) e);
+        n++;
     }
 
     @Override
@@ -101,4 +103,11 @@ public class SortedArrayPriorityQueue<K extends Comparable, E> implements Prioti
         }
         return min;
     } 
+
+    public void print() {
+        for (int i = 0; i < n; i++) {
+            System.out.println(array[i].getKey() + " " + array[i].getValue());
+        }
+    }
+    
 }

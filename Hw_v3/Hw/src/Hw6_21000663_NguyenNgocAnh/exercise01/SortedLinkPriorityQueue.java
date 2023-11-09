@@ -79,6 +79,7 @@ public class SortedLinkPriorityQueue<K extends Comparable, E> implements Priotit
                 current = current.next;
             }
         }
+        n++;
 }
 
 
@@ -92,5 +93,13 @@ public class SortedLinkPriorityQueue<K extends Comparable, E> implements Priotit
     @Override
     public Entry min() {
         return head;
+    }
+
+    public void print() {
+        NodeEntry<K, E> current = head;
+        while (current != null) {
+            System.out.println(current.getKey() + " " + current.getValue());
+            current = current.next;
+        }
     }
 }

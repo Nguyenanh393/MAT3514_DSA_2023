@@ -51,6 +51,7 @@ public class UnsortedLinkedPriorityQueue<K extends Comparable, E> implements Pri
             tail.next = new NodeEntry<K, E>((K) entry.getKey(), (E) entry.getValue());
             tail = tail.next;
         }
+        n++;
     }
     @Override
     public void insert(Object k, Object e) {
@@ -61,6 +62,7 @@ public class UnsortedLinkedPriorityQueue<K extends Comparable, E> implements Pri
             tail.next = new NodeEntry<K, E>((K) k, (E) e);
             tail = tail.next;
         }
+        n++;
     }
     @Override
     public Entry removeMin() {
@@ -101,5 +103,13 @@ public class UnsortedLinkedPriorityQueue<K extends Comparable, E> implements Pri
             current = current.next;
         }
         return min;
+    }
+
+    public void print() {
+        NodeEntry<K, E> current = head;
+        while (current != null) {
+            System.out.println(current.getKey() + " " + current.getValue());
+            current = current.next;
+        }
     }
 }
