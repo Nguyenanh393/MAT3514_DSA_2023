@@ -1,5 +1,7 @@
 package Hw6_21000663_NguyenNgocAnh.exercise03;
 
+import Hw6_21000663_NguyenNgocAnh.exercise02.HeapPriorityQueue;
+
 public class SortAlgorithm {
 
     public static void bubbleSort(Integer[] array, Integer N) {
