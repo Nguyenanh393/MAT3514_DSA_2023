@@ -61,7 +61,7 @@ public class MinHeapPriorityQueue<K extends Comparable, E> extends SortedArrayPr
             }
             heapPQ = newHeap;
         }
-        heapPQ[n] = new ArrEntry((K) entry.getKey(), (E) entry.getValue());
+        heapPQ[n] = (ArrEntry) entry;
         n++;
         upHeap();
     }
@@ -93,18 +93,18 @@ public class MinHeapPriorityQueue<K extends Comparable, E> extends SortedArrayPr
 
     protected void downHeap() {
         int i = 0;
-        while (i < n / 2) {
+        while (true) {
             int left = 2 * i + 1;
             int right = 2 * i + 2;
-            int child = left;
+            int smallest = left;
             if (right < n && heapPQ[right].getKey().compareTo(heapPQ[left].getKey()) < 0) {
-                child = right;
+                smallest = right;
             }
-            if (heapPQ[i].getKey().compareTo(heapPQ[child].getKey()) <= 0) {
+            if (left >= n || heapPQ[i].getKey().compareTo(heapPQ[smallest].getKey()) <= 0) {
                 break;
             }
-            swap(i, child);
-            i = child;
+            swap(i, smallest);
+            i = smallest;
         }
     }
     private void swap(int i, int j) {
@@ -119,8 +119,8 @@ public class MinHeapPriorityQueue<K extends Comparable, E> extends SortedArrayPr
         }
         Entry<K, E> min = heapPQ[0];
         heapPQ[0] = heapPQ[n - 1];
-        n--;
         downHeap();
+        n--;
         return min;
     }
 
@@ -129,5 +129,11 @@ public class MinHeapPriorityQueue<K extends Comparable, E> extends SortedArrayPr
             return null;
         }
         return heapPQ[0];
+    }
+
+    public void print() {
+        for (int i = 0; i < n; i++) {
+            System.out.println(heapPQ[i].getKey() + " " + heapPQ[i].getValue());
+        }
     }
 }
