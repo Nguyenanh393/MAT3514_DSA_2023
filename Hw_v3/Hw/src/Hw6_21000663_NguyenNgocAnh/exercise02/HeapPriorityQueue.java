@@ -1,6 +1,5 @@
 package Hw6_21000663_NguyenNgocAnh.exercise02;
-// Sử dụng cấu trúc dữ liệu HeapPriorityQueue để viết hàm HeapSort sắp xếp dãy số theo thứ
-// tự tăng dần.
+
 public class HeapPriorityQueue<E> {
     private E[] heap;
     private int size = 0;

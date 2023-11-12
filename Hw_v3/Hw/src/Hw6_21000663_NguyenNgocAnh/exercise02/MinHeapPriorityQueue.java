@@ -45,6 +45,40 @@ public class MinHeapPriorityQueue<K extends Comparable, E> extends SortedArrayPr
         }
     }
 
+    public int size() {
+        return n;
+    }
+
+    public boolean isEmpty() {
+        return n == 0;
+    }
+
+    public void insert(Entry entry) {
+        if (n == heapPQ.length) {
+            ArrEntry[] newHeap = new ArrEntry[heapPQ.length * 2];
+            for (int i = 0; i < heapPQ.length; i++) {
+                newHeap[i] = heapPQ[i];
+            }
+            heapPQ = newHeap;
+        }
+        heapPQ[n] = new ArrEntry((K) entry.getKey(), (E) entry.getValue());
+        n++;
+        upHeap();
+    }
+
+    public void insert(K key, E element) {
+        if (n == heapPQ.length) {
+            ArrEntry[] newHeap = new ArrEntry[heapPQ.length * 2];
+            for (int i = 0; i < heapPQ.length; i++) {
+                newHeap[i] = heapPQ[i];
+            }
+            heapPQ = newHeap;
+        }
+        heapPQ[n] = new ArrEntry(key, element);
+        n++;
+        upHeap();
+    }
+
     protected void upHeap() {
         int i = n - 1;
         while (i > 0) {
