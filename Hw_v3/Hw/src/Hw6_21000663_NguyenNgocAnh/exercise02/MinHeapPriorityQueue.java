@@ -4,17 +4,8 @@ import Hw6_21000663_NguyenNgocAnh.exercise01.Entry;
 import Hw6_21000663_NguyenNgocAnh.exercise01.SortedArrayPriorityQueue;
 
 public class MinHeapPriorityQueue<K extends Comparable, E> extends SortedArrayPriorityQueue { 
-//     Xây dựng cấu trúc dữ liệu hàng đợi ưu tiên sử dụng heap cài đặt bằng mảng với lược
-// đồ như sau:
-// 1 public class MinHeapPriorityQueue < K extends Comparable , E > extends
-// 2 SortedArrayPriorityQueue {
-// 3 ArrEntry <K ,E > heapPQ [];
-// 4 // Update methods
-// 5 protected void upHeap ()
-// 6 protected void downHeap ()
-// 7 }
 
-    ArrEntry<K, E>[] heapPQ;
+    ArrEntry[] heapPQ;
     private int capacity = 100;
     private int n = 0;
 
@@ -27,10 +18,12 @@ public class MinHeapPriorityQueue<K extends Comparable, E> extends SortedArrayPr
         heapPQ = new ArrEntry[capacity];
     }
 
-    public class ArrEntry<K, E> implements Entry<K, E> {
+    public class ArrEntry<K extends Comparable<K>, E> extends SortedArrayPriorityQueue<K, E>.ArrEntry<K, E> implements Entry<K, E> {
         private K key;
         private E element;
+
         public ArrEntry(K k, E e) {
+            super(k, e);
             key = k;
             element = e;
         }
@@ -42,6 +35,7 @@ public class MinHeapPriorityQueue<K extends Comparable, E> extends SortedArrayPr
             }
             return key;
         }
+
         @Override
         public E getValue() {
             if (element == null) {
@@ -50,6 +44,7 @@ public class MinHeapPriorityQueue<K extends Comparable, E> extends SortedArrayPr
             return element;
         }
     }
+
     protected void upHeap() {
         int i = n - 1;
         while (i > 0) {
@@ -61,6 +56,7 @@ public class MinHeapPriorityQueue<K extends Comparable, E> extends SortedArrayPr
             i = p;
         }
     }
+
     protected void downHeap() {
         int i = 0;
         while (i < n / 2) {
@@ -78,21 +74,12 @@ public class MinHeapPriorityQueue<K extends Comparable, E> extends SortedArrayPr
         }
     }
     private void swap(int i, int j) {
-        ArrEntry<K, E> temp = heapPQ[i];
+        ArrEntry temp = heapPQ[i];
         heapPQ[i] = heapPQ[j];
         heapPQ[j] = temp;
     }
-    @Override
-    public void insert(Entry entry) {
-        if (n == capacity) {
-            throw new IllegalStateException("Queue is full");
-        }
-        heapPQ[n] = new ArrEntry<K, E>((K) entry.getKey(), (E) entry.getValue());
-        n++;
-        upHeap();
-    }
-    @Override
-    public Entry removeMin() {
+
+    public Entry<K, E> removeMin() {
         if (isEmpty()) {
             return null;
         }
@@ -102,14 +89,11 @@ public class MinHeapPriorityQueue<K extends Comparable, E> extends SortedArrayPr
         downHeap();
         return min;
     }
-    @Override
-    public Entry min() {
+
+    public Entry<K, E> min() {
         if (isEmpty()) {
             return null;
         }
         return heapPQ[0];
     }
-
-
-    
 }

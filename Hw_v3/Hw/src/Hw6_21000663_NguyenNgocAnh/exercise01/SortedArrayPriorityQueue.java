@@ -54,8 +54,16 @@ public class SortedArrayPriorityQueue<K extends Comparable, E> implements Prioti
             }
             array = newArray;
         }
-        array[n] = (ArrEntry<K, E>) entry;
-        n++;
+        for (int i = 0; i < n; i++) {
+            if (array[i].getKey().compareTo((K) entry.getKey()) > 0) {
+                for (int j = n; j > i; j--) {
+                    array[j] = array[j - 1];
+                }
+                array[i] = (ArrEntry<K, E>) entry;
+                n++;
+                return;
+            }
+        }
     }
 
     @Override
@@ -67,9 +75,16 @@ public class SortedArrayPriorityQueue<K extends Comparable, E> implements Prioti
             }
             array = newArray;
         }
-
-        array[n] = new ArrEntry((K) k, (E) e);
-        n++;
+        for (int i = 0; i < n; i++) {
+            if (array[i].getKey().compareTo((K) k) > 0) {
+                for (int j = n; j > i; j--) {
+                    array[j] = array[j - 1];
+                }
+                array[i] = new ArrEntry((K) k, (E) e);
+                n++;
+                return;
+            }
+        }
     }
 
     @Override

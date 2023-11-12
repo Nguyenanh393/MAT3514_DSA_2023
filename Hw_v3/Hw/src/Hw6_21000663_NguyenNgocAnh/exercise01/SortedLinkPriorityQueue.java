@@ -78,6 +78,13 @@ public class SortedLinkPriorityQueue<K extends Comparable, E> implements Priotit
                 previous = current;
                 current = current.next;
             }
+            if (previous == null) {
+                newNode.next = head;
+                head = newNode;
+            } else {
+                newNode.next = current;
+                previous.next = newNode;
+            }
         }
         n++;
 }

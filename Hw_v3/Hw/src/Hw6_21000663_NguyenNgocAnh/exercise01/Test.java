@@ -2,96 +2,43 @@ package Hw6_21000663_NguyenNgocAnh.exercise01;
 
 public class Test {
     public static void main(String[] args) {
-        UnsortedArrayPriorityQueue<Integer, Integer> unsortedArrayPriorityQueue = new UnsortedArrayPriorityQueue<>(5);
-        unsortedArrayPriorityQueue.insert(1, 1);
-        unsortedArrayPriorityQueue.insert(2, 2);
+        // Viết hàm test các kiểu dữ liệu PriorityQueue đã triển khai với:
+        // – Danh sách các số nguyên, giá trị phần tử dùng làm khóa.
+        // – Danh sách các đối tượng có khóa và giá trị khác nhau. Ví dụ: đối tượng hàng hóa bao gồm tên hàng
+        // hóa (giá trị), giá tiền (khóa)
 
-        //System.out.println(unsortedArrayPriorityQueue.min().getValue());
+        // Danh sách các số nguyên, giá trị phần tử dùng làm khóa.
+        SortedLinkPriorityQueue<Integer, Integer> sortedLinkPriorityQueue = new SortedLinkPriorityQueue<>();
 
-        unsortedArrayPriorityQueue.insert(3, 3);
-        unsortedArrayPriorityQueue.insert(4, 4);
+        Entry<Integer, Integer> entry1 = new SortedLinkPriorityQueue<Integer, Integer>().new NodeEntry<Integer, Integer>(1, 1);
+        Entry<Integer, Integer> entry2 = new SortedLinkPriorityQueue<Integer, Integer>().new NodeEntry<Integer, Integer>(2, 2);
+        Entry<Integer, Integer> entry3 = new SortedLinkPriorityQueue<Integer, Integer>().new NodeEntry<Integer, Integer>(3, 3);
 
-        // using Entry
-        Entry<Integer, Integer> entry = new UnsortedArrayPriorityQueue<>(5).new ArrEntry<>(5, 9);
+        sortedLinkPriorityQueue.insert(entry2);
+        sortedLinkPriorityQueue.insert(entry1);
+        sortedLinkPriorityQueue.insert(entry3);
 
-        unsortedArrayPriorityQueue.insert(entry);
+        System.out.println("Danh sách các số nguyên, giá trị phần tử dùng làm khóa: ");
+        sortedLinkPriorityQueue.print();
 
-        unsortedArrayPriorityQueue.print();
+        // Danh sách các đối tượng có khóa và giá trị khác nhau. Ví dụ: đối tượng hàng hóa bao gồm tên hàng
 
-        System.out.println("-----------------");
+        SortedLinkPriorityQueue<String, Integer> sortedLinkPriorityQueue1 = new SortedLinkPriorityQueue<>();
 
-        unsortedArrayPriorityQueue.removeMin();
+        Entry<Integer, String>entry4 = new SortedLinkPriorityQueue<Integer, String>().new NodeEntry<Integer, String>(1, "A");
+        Entry<Integer, String> entry5 = new SortedLinkPriorityQueue<Integer, String>().new NodeEntry<Integer, String>(2, "B");
+        Entry<Integer, String> entry6 = new SortedLinkPriorityQueue<Integer, String>().new NodeEntry<Integer, String>(3, "C");
 
-        //unsortedArrayPriorityQueue.print();
+        sortedLinkPriorityQueue1.insert(entry5);
+        sortedLinkPriorityQueue1.insert(entry4);
+        sortedLinkPriorityQueue1.insert(entry6);
 
+        sortedLinkPriorityQueue1.insert(1, "D");
 
-        System.out.println("_______________________________");
-
-        SortedArrayPriorityQueue<Integer, Integer> sortedArrayPriorityQueue = new SortedArrayPriorityQueue<>(5);
-        sortedArrayPriorityQueue.insert(1, 1);
-        sortedArrayPriorityQueue.insert(2, 2);
-        sortedArrayPriorityQueue.insert(3, 3);
-        sortedArrayPriorityQueue.insert(4, 4);
-
-        // using Entry
-        Entry<Integer, Integer> entry2 = new SortedArrayPriorityQueue<>(5).new ArrEntry<>(5, 0);
-
-        sortedArrayPriorityQueue.insert(entry2);
-
-        sortedArrayPriorityQueue.print();
-
-        System.out.println("-----------------");
-
-        sortedArrayPriorityQueue.removeMin();
-
-        sortedArrayPriorityQueue.print();
-
-        System.out.println("_______________________________");
-
-        UnsortedLinkedPriorityQueue<Integer, Integer> unsortedLinkedPriorityQueue = new UnsortedLinkedPriorityQueue<>();
-        unsortedLinkedPriorityQueue.insert(1, 1);
-        unsortedLinkedPriorityQueue.insert(2, 2);
-        unsortedLinkedPriorityQueue.insert(3, 3);
-        unsortedLinkedPriorityQueue.insert(4, 4);
-
-        // using Entry
-        Entry<Integer, Integer> entry3 = new UnsortedLinkedPriorityQueue<Integer, Integer>().new NodeEntry<>(5, 0);
-
-        unsortedLinkedPriorityQueue.insert(entry3);
-
-        unsortedLinkedPriorityQueue.print();
-
-        System.out.println("-----------------");
-
-        unsortedLinkedPriorityQueue.removeMin();
-
-        unsortedLinkedPriorityQueue.print();
-
-        System.out.println("_______________________________");
-
-        SortedLinkPriorityQueue<Integer, Integer> sortedLinkedPriorityQueue = new SortedLinkPriorityQueue<>();
-        sortedLinkedPriorityQueue.insert(1, 1);
-        sortedLinkedPriorityQueue.insert(2, 2);
-        sortedLinkedPriorityQueue.insert(3, 3);
-        sortedLinkedPriorityQueue.insert(4, 4);
-        
-        // using Entry
-        Entry<Integer, Integer> entry4 = new SortedLinkPriorityQueue<Integer, Integer>().new NodeEntry<>(5, 0);
-
-        sortedLinkedPriorityQueue.insert(entry4);
-
-        sortedLinkedPriorityQueue.print();
-
-        System.out.println("-----------------");
-
-        sortedLinkedPriorityQueue.removeMin();
-
-        sortedLinkedPriorityQueue.print();
-
-        System.out.println("_______________________________");
-
-
-
-
+        System.out.println("Danh sách các đối tượng có khóa và giá trị khác nhau: ");
+        sortedLinkPriorityQueue1.print();
+        sortedLinkPriorityQueue1.removeMin();
+        sortedLinkPriorityQueue1.print();
+        System.out.println(sortedLinkPriorityQueue1.min().getValue());
     }
 }
